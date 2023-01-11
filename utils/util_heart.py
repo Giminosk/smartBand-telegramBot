@@ -40,7 +40,7 @@ def heart_main():
     plot_heart(today, mean_rate)
     
     out1 = f'Agerage heart rate for previous month: {mean_month_rate} bpm\n'
-    out2 = f'Daily statistics:\nLast heart rate: {cur_rate} bpm\nMaximal heart rate: {max_rate} bpm\n\
-Average heart rate: {mean_rate} bpm\nMinimal heart rate: {max_rate} bpm'
+    out2 = f'Daily statistics:\n\nLast heart rate: {cur_rate} bpm\n\nMaximal heart rate: {max_rate} bpm\n\n\
+Average heart rate: {mean_rate} bpm\n\nMinimal heart rate: {max_rate} bpm'
     
     return out1, out2

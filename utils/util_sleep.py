@@ -32,14 +32,14 @@ def sleep_main():
     month = sleep.iloc[-30:-1]
     
     total, deep, shallow, rem, wake = get_sleep_stats(today)
-    out1 = f'Your last sleep:\nTotal sleep time: {total} hours\
-\nDeep sleep: {deep[0]} hour is {deep[1]}% of total sleep time\
-\nShallow sleep: {shallow[0]} hour is {shallow[1]}% of total sleep time\
-\nREM phase: {rem[0]} hour is {rem[1]}% of total sleep time\
-\nWake period: {wake} minutes'
+    out1 = f'Your last sleep:\n\nTotal sleep time: {total} hours\
+\n\nDeep sleep: {deep[0]} hour is {deep[1]}% of total sleep time\
+\n\nShallow sleep: {shallow[0]} hour is {shallow[1]}% of total sleep time\
+\n\nREM phase: {rem[0]} hour is {rem[1]}% of total sleep time\
+\n\nWake period: {wake} minutes'
     
     total_diff, deep_diff = sleep_compare(month, today)
-    out2 = f'\nThis night you slept {abs(total_diff)} hours {"more" if total_diff >= 0 else "less"} than last month, and your deep sleep was \
+    out2 = f'\nThis night you slept {abs(total_diff)} hours {"more" if total_diff >= 0 else "less"} than last month, \n\nand your deep sleep was \
 {abs(deep_diff)} hours {"longer" if deep_diff >= 0 else "shorter"}'
     
     return out1, out2
