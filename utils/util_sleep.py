@@ -31,7 +31,23 @@ def plot_sleep(today):
     fig, ax = plt.subplots(1, 1, figsize=(15,5))
     plt.pie(stats, labels = ['Deep sleep', 'Shallow sleep', 'REM'], autopct='%.2f%%')
     plt.title(f'You slept {convert_minutes(today["totalSleepTime"])} hours:', fontdict={'fontsize': 16})
-    plt.savefig(img_dir + 'sleep.png')
+    plt.savefig(img_dir + 'sleep1.png')
+    plt.close()
+
+
+def plot_sleep_month(month):
+    x_axis = month['stop'].apply(lambda x: x.split(' ')[0][5:])
+    
+    fig, ax = plt.subplots(1, 1, figsize=(15,5))
+    plt.bar(x_axis, month['totalSleepTime'].apply(lambda x: convert_minutes(x)), color='#42b2d4')
+    ax.set_xticks([x if i % 2 == 0 else '' for i, x in enumerate(x_axis)])
+    
+    mean = convert_minutes(np.mean(month['totalSleepTime']))
+    ax.plot(x_axis, [mean for _ in range(len(month))], '--', linewidth=1, color='red')
+    ax.set_title('Last month sleeps', fontdict={'fontsize': 16})
+    ax.set_ylabel('Hours', fontdict={'fontsize': 14})
+
+    plt.savefig(img_dir + 'sleep2.png')
     plt.close()
 
 
@@ -54,5 +70,6 @@ def sleep_main():
 {abs(deep_diff)} hours {"longer" if deep_diff >= 0 else "shorter"}'
 
     plot_sleep(today)
+    plot_sleep_month(month)
     
     return out1, out2

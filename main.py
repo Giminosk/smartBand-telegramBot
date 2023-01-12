@@ -28,7 +28,7 @@ def button(update, context):
     if action == "Heart rate":
         output, images = heart_main(), ['./images/heart.png']
     elif action == "Sleep time":
-        output = sleep_main(), ['./images/sleep.png']
+        output, images = sleep_main(), ['./images/sleep1.png', './images/sleep2.png']
 
     for out in output:
         context.bot.send_message(chat_id=update.effective_chat.id, text=out, parse_mode=telegram.ParseMode.HTML)
