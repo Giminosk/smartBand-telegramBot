@@ -38,8 +38,8 @@ def button(update, context):
     for img in images:
         context.bot.send_document(chat_id=update.effective_chat.id, document=open(img, 'rb'))
 
-    updater.dispatcher.add_handler(start_handler)
-    
+    start_handler.callback(update, context)
+
 
 if __name__ == "__main__":
     updater = Updater("5580256888:AAG0KAM7ynNL9S7MnS_ZamPqrZ-k-xiCP0k", use_context=True)
