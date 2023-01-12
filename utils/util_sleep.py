@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 data_dir = 'data/'
+img_dir = 'images/'
 
 
 def convert_minutes(time):
@@ -24,6 +26,15 @@ def sleep_compare(month, today):
     return convert_minutes(total_diff), convert_minutes(deep_diff)
 
 
+def plot_sleep(today):
+    stats = [today['deepSleepTime'], today['shallowSleepTime'], today['REMTime']]
+    fig, ax = plt.subplots(1, 1, figsize=(15,5))
+    plt.pie(stats, labels = ['Deep sleep', 'Shallow sleep', 'REM'], autopct='%.2f%%')
+    plt.title(f'You slept {convert_minutes(today["totalSleepTime"])} hours:', fontdict={'fontsize': 16})
+    plt.savefig(img_dir + 'sleep.png')
+    plt.close()
+
+
 def sleep_main():
     sleep = pd.read_csv(data_dir+'sleep.csv')
     sleep = sleep[sleep.columns[:7]]
@@ -41,5 +52,7 @@ def sleep_main():
     total_diff, deep_diff = sleep_compare(month, today)
     out2 = f'\nThis night you slept {abs(total_diff)} hours {"more" if total_diff >= 0 else "less"} than last month, \n\nand your deep sleep was \
 {abs(deep_diff)} hours {"longer" if deep_diff >= 0 else "shorter"}'
+
+    plot_sleep(today)
     
     return out1, out2
