@@ -42,7 +42,7 @@ def button(update, context):
 
 
 if __name__ == "__main__":
-    updater = Updater("5580256888:AAG0KAM7ynNL9S7MnS_ZamPqrZ-k-xiCP0k", use_context=True)
+    updater = Updater("YOUR TELEGRAM API KEY", use_context=True)
 
     start_handler = CommandHandler("start", start)
     button_handler = CallbackQueryHandler(button)
