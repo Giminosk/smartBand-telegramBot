@@ -4,6 +4,7 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 import json
 from utils.util_heart import heart_main
 from utils.util_sleep import sleep_main
+from utils.util_activity import activity_main
 
 with open("actions.json", "r") as f:
     actions = json.load(f)
@@ -29,6 +30,8 @@ def button(update, context):
         output, images = heart_main(), ['./images/heart.png']
     elif action == "Sleep time":
         output, images = sleep_main(), ['./images/sleep1.png', './images/sleep2.png']
+    elif action == "Activity":
+        output, images = activity_main(), ['./images/activity.png']
 
     for out in output:
         context.bot.send_message(chat_id=update.effective_chat.id, text=out, parse_mode=telegram.ParseMode.HTML)

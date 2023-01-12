@@ -44,3 +44,4 @@ def heart_main():
 Average heart rate: {mean_rate} bpm\n\nMinimal heart rate: {max_rate} bpm'
     
     return out1, out2
+    

@@ -66,10 +66,11 @@ def sleep_main():
 \n\nWake period: {wake} minutes'
     
     total_diff, deep_diff = sleep_compare(month, today)
-    out2 = f'\nThis night you slept {abs(total_diff)} hours {"more" if total_diff >= 0 else "less"} than last month, \n\nand your deep sleep was \
+    out2 = f'\nThis night you slept {abs(total_diff)} hours {"more" if total_diff >= 0 else "less"} than last month average, \n\nand your deep sleep was \
 {abs(deep_diff)} hours {"longer" if deep_diff >= 0 else "shorter"}'
 
     plot_sleep(today)
     plot_sleep_month(month)
     
     return out1, out2
+    
