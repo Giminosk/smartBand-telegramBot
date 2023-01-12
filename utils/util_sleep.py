@@ -28,7 +28,7 @@ def sleep_compare(month, today):
 
 def plot_sleep(today):
     stats = [today['deepSleepTime'], today['shallowSleepTime'], today['REMTime']]
-    fig, ax = plt.subplots(1, 1, figsize=(15,5))
+    fig, ax = plt.subplots(1, 1, figsize=(7, 7))
     plt.pie(stats, labels = ['Deep sleep', 'Shallow sleep', 'REM'], autopct='%.2f%%')
     plt.title(f'You slept {convert_minutes(today["totalSleepTime"])} hours:', fontdict={'fontsize': 16})
     plt.savefig(img_dir + 'sleep1.png')
